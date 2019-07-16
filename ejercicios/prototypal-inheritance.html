@@ -31,9 +31,19 @@
       const zelda = new Hero('Zelda');
 
       // propiedades de la instancia
+      console.log('Name:', zelda.name);
       // propiedades de la "clase"
+      console.log('Saludar:', zelda.saludar);
+
       // propiedades heredadas ej: toString
+      console.log('toString:', zelda.toString);
+
       // hasOwnProperty (de dónde sale toString o esto?)
+      console.log(
+        'zelda.hasOwnProperty("saludar"):',
+        zelda.hasOwnProperty('saludar')
+      );
+
       // inspeccionemos el prototipo del zelda
       // inspeccionemos el prototipo del Hero
       // inspeccionemos el prototipo del Object
