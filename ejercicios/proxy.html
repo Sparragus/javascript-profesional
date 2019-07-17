@@ -19,6 +19,34 @@
 
       // Para eso eso vamos a usar un algoritmo que se llama Levenshtein. (window.Levenshtein.get)
       // Ejemplos de levenshtein distance (usa window.Levenshtein)
+
+      const target = {
+        red: 'Rojo',
+        green: 'Verde',
+        blue: 'Azul',
+      };
+
+      const handler = {
+        get(obj, prop) {
+          if (prop in obj) {
+            return obj[prop];
+          }
+
+          const suggestion = Object.keys(obj).find(key => {
+            return Levenshtein.get(key, prop) <= 3;
+          });
+
+          if (suggestion) {
+            console.log(
+              `${prop} no se encontró. Quisiste decir ${suggestion}?`
+            );
+          }
+
+          return obj[prop];
+        },
+      };
+
+      const p = new Proxy(target, handler);
     </script>
   </body>
 </html>
